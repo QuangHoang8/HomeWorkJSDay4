@@ -1,0 +1,226 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>Hello</p>
+
+    <script>
+      // Bài 1: Viết hàm tính thể tích hình cầu, với tham số truyền vào là bán kính của hình cầu.
+
+      function volume(n) {
+        return (4 / 3) * Math.PI * Math.pow(n, 3);
+      }
+      console.log(volume(4));
+      //    Bài 2: Viết hàm truyền vào 2 số nguyên, tính tổng tất cả các số nguyên nằm giữa chúng. Ví dụ với
+      // tham số 3 và 8 ta có kết quả là 22 (bằng 4 + 5 + 6 + 7).
+
+      function sumI(a, b) {
+        if (a > b) {
+          var sl = a - b + 1;
+        } else if (b > a) {
+          var sl = b - a + 1;
+        } else {
+          return 0;
+        }
+        return ((a + b) * sl) / 2 - a - b;
+      }
+      console.log(sumI(5, 1));
+
+      // Bài 3: Cho 1 số, kiểm tra xem số đó có phải là số nguyên tố hay không, kết quả trả về true hoặc false.
+
+      function soNt(n) {
+        if (n < 2) {
+          return false;
+        } else {
+          for (var i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+              return false;
+            }
+          }
+          return true;
+        }
+      }
+      console.log(soNt(8));
+
+      //       Bài 4: Cho 1 số nguyên dương bất kỳ. Tính tổng tất cả các số nguyên tố mà nhỏ hơn hoặc bằng tham
+      // số truyền vào.
+
+      function sumNd(n) {
+        var sum = 0;
+        if (n > 1) {
+          for (var i = 2; i <= n; i++) {
+            if (soNt(i)) {
+              sum += i;
+            }
+          }
+        }
+        return sum;
+      }
+      console.log(sumNd(9));
+
+      // Bài 5: Cho 1 số nguyên dương, viết hàm tính tổng tất cả các ước số của số đó.
+
+      function sumUoc(n) {
+        var sum = 0;
+        if (n > 0) {
+          for (var i = 1; i <= n; i++) {
+            if (n % i == 0) {
+              sum += i;
+            }
+          }
+          return sum;
+        }
+      }
+      console.log(sumUoc(10));
+
+      //       Bài 6. Viết hàm để lấy danh sách các key của object
+      // vd :
+      // var user = {
+      //     name : "Trương Minh Thúy",
+      //     age : 25,
+      //     email : 'support@techmaster.vn'
+      // };
+
+      function getKey(obj) {
+        return Object.keys(obj);
+      }
+
+      console.log(
+        getKey(
+          (user = {
+            name: "Trương Minh Thúy",
+            age: 25,
+            email: "support@techmaster.vn",
+          })
+        )
+      );
+
+      //       Bài 7. Viết hàm để lấy danh sách các value của object
+      // vd :
+      // var user = {
+      //     name : "Trương Minh Thúy",
+      //     age : 25,
+      //     email : 'support@techmaster.vn'
+      // };
+
+      function getValue(obj) {
+        return Object.values(obj);
+      }
+
+      console.log(
+        getValue(
+          (user = {
+            name: "Trương Minh Thúy",
+            age: 25,
+            email: "support@techmaster.vn",
+          })
+        )
+      );
+
+      //     Bài 8. Viết hàm kiểm tra key có tồn tại trong Object không
+      // vd :
+      // var user = {
+      //     name : "Trương Minh Thúy",
+      //     age : 25,
+      //     email : 'support@techmaster.vn'
+      // };
+      // => checkKey('name') => true
+      // checkKey('study') => false
+
+      function checkKey(key) {
+        var user = {
+          name: "Trương Minh Thúy",
+          age: 25,
+          email: "support@techmaster.vn",
+        };
+        return user.hasOwnProperty(key);
+      }
+      console.log(checkKey("email"));
+
+      //       Bài 9. Viết hàm kiểm tra Object có độ dài bao nhiêu
+      // vd :
+      // var user = {
+      //     name : "Trương Minh Thúy",
+      //     age : 25,
+      //     email : 'support@techmaster.vn'
+      // };
+      // => getLengthObject(user) => 3
+
+      function getLengthObject(obj) {
+        return Object.keys(obj).length;
+      }
+      var user = {
+        name: "Trương Minh Thúy",
+        age: 25,
+        email: "support@techmaster.vn",
+      };
+      console.log(getLengthObject(user));
+
+      //       Bài 10. Cho mảng các user
+      // mỗi object có cấu trúc như sau
+      // user = {
+      //     name : string,
+      //     age : number,
+      //     isStatus : bool
+      // }
+
+      // Viết function lấy ra những user có tuổi > 25 và isStatus = true
+
+      function getUser(arr) {
+        var userS = [];
+        for (var i = 0; i < arr.length; i++) {
+          if (arr[i].age > 25 && arr[i].isStatus == true) {
+            userS.push(arr[i]);
+          }
+        }
+        return userS;
+      }
+      var arrM = [
+        (user1 = {
+          name: "A",
+          age: 20,
+          isStatus: true,
+        }),
+        (user2 = {
+          name: "B",
+          age: 26,
+          isStatus: true,
+        }),
+        (user3 = {
+          name: "B",
+          age: 27,
+          isStatus: false,
+        }),
+        (user4 = {
+          name: "D",
+          age: 20,
+          isStatus: true,
+        }),
+        (user5 = {
+          name: "E",
+          age: 26,
+          isStatus: true,
+        }),
+        (user5 = {
+          name: "F",
+          age: 27,
+          isStatus: false,
+        }),
+      ];
+      console.log(getUser(arrM));
+
+      //       Bài 11. Tương tự bài 10
+      // Viết function sắp xếp các user theo tuổi tăng dần
+
+      function sortAge(arr) {
+        return arr.sort((a, b) => {
+          return a.age - b.age;
+        });
+      }
+      console.log(sortAge(arrM));
+    </script>
+  </body>
+</html>
